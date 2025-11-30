@@ -104,7 +104,7 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CfEPzLVS.js",
+    "file": "assets/client-CgddUba5.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
