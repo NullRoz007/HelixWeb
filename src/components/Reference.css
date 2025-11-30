@@ -1,0 +1,31 @@
+section {
+    font-size: 12px;
+}
+
+code {
+    background-color: black;
+    color: white;
+}
+
+/* Simple striped table styling compatible with system.css */
+.table-striped {
+    border-collapse: collapse;
+    width: 100%;
+    margin-bottom: 1em;
+}
+
+.table-striped th,
+.table-striped td {
+    border: 1px solid #ccc;
+    padding: 6px 8px;
+    text-align: left;
+}
+
+.table-striped tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.table-striped th {
+    background-color: #e0e0e0;
+    font-weight: bold;
+}

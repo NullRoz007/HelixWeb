@@ -1,0 +1,33 @@
+#editor {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    top: -10px;
+    margin-bottom: 10px;
+}
+
+#parse-modal {
+    position: fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    width:30rem;
+    z-index: 99;
+}
+
+#parse-modal details {
+    font-size: 12px;
+}
+
+#parse-modal .modal-contents {
+    max-height: 40vh;
+    overflow-y: auto;     
+}
+
+textarea {
+    flex-grow: inherit;
+    height: 250px;
+    resize: none;
+    font-family: Chicago_12;
+    border-radius: 0px;
+    border-style: dotted;
+}
