@@ -5,6 +5,15 @@ section {
 code {
     background-color: black;
     color: white;
+    font-family: Chicago;
+    font-size: 12px;
+}
+
+.codeblock {
+    background-color: black;
+    color: white;
+    font-family: Chicago;
+    font-size: 12px;
 }
 
 /* Simple striped table styling compatible with system.css */
@@ -21,11 +30,8 @@ code {
     text-align: left;
 }
 
-.table-striped tr:nth-child(even) {
-    background-color: #f2f2f2;
-}
-
 .table-striped th {
-    background-color: #e0e0e0;
+    background-color: black;
+    color: white;
     font-weight: bold;
 }
