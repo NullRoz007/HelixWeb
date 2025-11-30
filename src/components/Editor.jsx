@@ -145,61 +145,65 @@ export default function Editor() {
             </div>
             
             <Show when={errorModalState()}>
-                <div class="standard-dialog center scale-down" id="parse-modal">
-                    <div class="modal-contents">
-                        <h1 class="modal-text">Error during build!</h1>
-                        <p>{errorText()}</p>
+                <div class="modal-overlay" onClick={() => setErrorModalState(false)}>
+                    <div class="standard-dialog center scale-down" id="error-modal" onClick={(e) => e.stopPropagation()}>
+                        <div class="modal-contents">
+                            <h1 class="modal-text">Error during build!</h1>
+                            <p>{errorText()}</p>
 
-                        <section class="field-row" style="justify-content: flex-end">
-                            <button class="btn" onClick={() => setErrorModalState(false)}>OK</button>
-                        </section>
+                            <section class="field-row" style="justify-content: flex-end">
+                                <button class="btn" onClick={() => setErrorModalState(false)}>OK</button>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </Show>
 
             <Show when={parseModalState() && lexer() && parser()}>
-                <div class="standard-dialog center scale-down" id="parse-modal">
-                    <div class="modal-contents">
-                        <h1 class="modal-text">Parse Results</h1>
-                        <details>
-                            <summary>Tokens</summary>
-                            <ol>
-                                <For each={reportTokens()}>{(token, i) =>
-                                    <li><p>{token.type + ' ' + (token.value || '')}</p></li>
-                                }</For>
-                            </ol>
-                        </details>
+                <div class="modal-overlay" onClick={() => setParseModalState(false)}>
+                    <div class="standard-dialog center scale-down" id="parse-modal" onClick={(e) => e.stopPropagation()}>
+                        <div class="modal-contents">
+                            <h1 class="modal-text">Parse Results</h1>
+                            <details>
+                                <summary>Tokens</summary>
+                                <ol>
+                                    <For each={reportTokens()}>{(token, i) =>
+                                        <li><p>{token.type + ' ' + (token.value || '')}</p></li>
+                                    }</For>
+                                </ol>
+                            </details>
 
-                        <details>
-                            <summary>Instructions</summary>
-                            <ol>
-                                <For each={reportInstructions()}>{(inst, i) =>
-                                    <li><p>{inst.toString()}</p></li>
-                                }</For>
-                            </ol>
-                        </details>
+                            <details>
+                                <summary>Instructions</summary>
+                                <ol>
+                                    <For each={reportInstructions()}>{(inst, i) =>
+                                        <li><p>{inst.toString()}</p></li>
+                                    }</For>
+                                </ol>
+                            </details>
 
-                        <details>
-                            <summary>Expressions</summary>
-                            <ol>
-                                <For each={reportExpressions()}>{(expr, i) =>
-                                    <li><p>{expr.expr + ' = ' + (expr.value || '??')}</p></li>
-                                }</For>
-                            </ol>
-                        </details>
+                            <details>
+                                <summary>Expressions</summary>
+                                <ol>
+                                    <For each={reportExpressions()}>{(expr, i) =>
+                                        <li><p>{expr.expr + ' = ' + (expr.value || '??')}</p></li>
+                                    }</For>
+                                </ol>
+                            </details>
 
-                        <details>
-                            <summary>Labels</summary>
-                            <ol>
-                                <For each={reportLabels()}>{(label, i) =>
-                                    <li><p>{label.name + ' = ' + (label.pos)}</p></li>
-                                }</For>
-                            </ol>
-                        </details>
+                            <details>
+                                <summary>Labels</summary>
+                                <ol>
+                                    <For each={reportLabels()}>{(label, i) =>
+                                        <li><p>{label.name + ' = ' + (label.pos)}</p></li>
+                                    }</For>
+                                </ol>
+                            </details>
 
-                        <section class="field-row" style="justify-content: flex-end">
-                            <button class="btn" onClick={() => setParseModalState(false)}>OK</button>
-                        </section>
+                            <section class="field-row" style="justify-content: flex-end">
+                                <button class="btn" onClick={() => setParseModalState(false)}>OK</button>
+                            </section>
+                        </div>
                     </div>
                 </div>
             </Show>
