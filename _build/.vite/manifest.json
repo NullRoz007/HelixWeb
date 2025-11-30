@@ -1,0 +1,130 @@
+{
+  "_HttpStatusCode-SAGlgVBI.js": {
+    "file": "assets/HttpStatusCode-SAGlgVBI.js",
+    "name": "HttpStatusCode",
+    "imports": [
+      "_web-CH6RNnj1.js"
+    ]
+  },
+  "_preload-helper-ug3pwPZ1.js": {
+    "file": "assets/preload-helper-ug3pwPZ1.js",
+    "name": "preload-helper"
+  },
+  "_web-CH6RNnj1.js": {
+    "file": "assets/web-CH6RNnj1.js",
+    "name": "web"
+  },
+  "node_modules/@sakun/system.css/dist/ChiKareGo2.woff": {
+    "file": "assets/ChiKareGo2-Dp199knk.woff",
+    "src": "node_modules/@sakun/system.css/dist/ChiKareGo2.woff"
+  },
+  "node_modules/@sakun/system.css/dist/ChicagoFLF.woff": {
+    "file": "assets/ChicagoFLF-o4fPnj_K.woff",
+    "src": "node_modules/@sakun/system.css/dist/ChicagoFLF.woff"
+  },
+  "node_modules/@sakun/system.css/dist/ChicagoFLF.woff2": {
+    "file": "assets/ChicagoFLF-KeddXS6Q.woff2",
+    "src": "node_modules/@sakun/system.css/dist/ChicagoFLF.woff2"
+  },
+  "node_modules/@sakun/system.css/dist/FindersKeepers.woff": {
+    "file": "assets/FindersKeepers-B7KOOmBS.woff",
+    "src": "node_modules/@sakun/system.css/dist/FindersKeepers.woff"
+  },
+  "node_modules/helixasm/src/lib/gen.mjs": {
+    "file": "assets/gen-ji6VN-HE.js",
+    "name": "gen",
+    "src": "node_modules/helixasm/src/lib/gen.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/helixasm/src/lib/lexer.mjs": {
+    "file": "assets/lexer-ZeEIXq-y.js",
+    "name": "lexer",
+    "src": "node_modules/helixasm/src/lib/lexer.mjs",
+    "isDynamicEntry": true
+  },
+  "node_modules/helixasm/src/lib/parser.mjs": {
+    "file": "assets/parser-DNFUkeM0.js",
+    "name": "parser",
+    "src": "node_modules/helixasm/src/lib/parser.mjs",
+    "isDynamicEntry": true,
+    "imports": [
+      "node_modules/helixasm/src/lib/lexer.mjs"
+    ]
+  },
+  "node_modules/nes.icons/fonts/nes-icons.eot": {
+    "file": "assets/nes-icons-B8YnONsN.eot",
+    "src": "node_modules/nes.icons/fonts/nes-icons.eot"
+  },
+  "node_modules/nes.icons/fonts/nes-icons.svg": {
+    "file": "assets/nes-icons-gyhiLfIX.svg",
+    "src": "node_modules/nes.icons/fonts/nes-icons.svg"
+  },
+  "node_modules/nes.icons/fonts/nes-icons.ttf": {
+    "file": "assets/nes-icons-C2tV2ren.ttf",
+    "src": "node_modules/nes.icons/fonts/nes-icons.ttf"
+  },
+  "node_modules/nes.icons/fonts/nes-icons.woff": {
+    "file": "assets/nes-icons-Do4A5HMC.woff",
+    "src": "node_modules/nes.icons/fonts/nes-icons.woff"
+  },
+  "src/routes/[...404].jsx?pick=default&pick=$css": {
+    "file": "assets/_...404_-B7odv5zb.js",
+    "name": "_...404_",
+    "src": "src/routes/[...404].jsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-CH6RNnj1.js",
+      "_HttpStatusCode-SAGlgVBI.js"
+    ]
+  },
+  "src/routes/index.jsx?pick=default&pick=$css": {
+    "file": "assets/index-QYF1n_lc.js",
+    "name": "index",
+    "src": "src/routes/index.jsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-CH6RNnj1.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ],
+    "dynamicImports": [
+      "node_modules/helixasm/src/lib/lexer.mjs",
+      "node_modules/helixasm/src/lib/parser.mjs",
+      "node_modules/helixasm/src/lib/gen.mjs"
+    ],
+    "css": [
+      "assets/index-cxfkMVcR.css"
+    ],
+    "assets": [
+      "assets/nes-icons-B8YnONsN.eot",
+      "assets/nes-icons-Do4A5HMC.woff",
+      "assets/nes-icons-C2tV2ren.ttf",
+      "assets/nes-icons-gyhiLfIX.svg"
+    ]
+  },
+  "virtual:$vinxi/handler/client": {
+    "file": "assets/client-C8wJtOA-.js",
+    "name": "client",
+    "src": "virtual:$vinxi/handler/client",
+    "isEntry": true,
+    "imports": [
+      "_HttpStatusCode-SAGlgVBI.js",
+      "_web-CH6RNnj1.js",
+      "_preload-helper-ug3pwPZ1.js"
+    ],
+    "dynamicImports": [
+      "src/routes/[...404].jsx?pick=default&pick=$css",
+      "src/routes/index.jsx?pick=default&pick=$css"
+    ],
+    "css": [
+      "assets/client-B20yXVYZ.css"
+    ],
+    "assets": [
+      "assets/ChicagoFLF-o4fPnj_K.woff",
+      "assets/ChicagoFLF-KeddXS6Q.woff2",
+      "assets/ChiKareGo2-Dp199knk.woff",
+      "assets/FindersKeepers-B7KOOmBS.woff"
+    ]
+  }
+}
