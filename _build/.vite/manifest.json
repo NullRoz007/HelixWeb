@@ -79,7 +79,7 @@
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-DJTr41ZS.js",
+    "file": "assets/index-TRvitTl3.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
@@ -94,7 +94,7 @@
       "node_modules/helixasm/src/lib/gen.mjs"
     ],
     "css": [
-      "assets/index-C2UD_Giu.css"
+      "assets/index-B7-BO71P.css"
     ],
     "assets": [
       "assets/nes-icons-B8YnONsN.eot",
@@ -104,7 +104,7 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CFXIQOoc.js",
+    "file": "assets/client-BTfe0hMX.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
@@ -118,7 +118,7 @@
       "src/routes/index.jsx?pick=default&pick=$css"
     ],
     "css": [
-      "assets/client-Ml2l_G8-.css"
+      "assets/client-Bh2Qf7YO.css"
     ],
     "assets": [
       "assets/ChicagoFLF-o4fPnj_K.woff",
