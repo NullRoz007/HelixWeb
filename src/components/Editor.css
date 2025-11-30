@@ -7,22 +7,20 @@
 }
 
 #parse-modal {
-    /* kept for any direct targeting, but layout is handled by .modal-overlay */
+
 }
 
-/* Full-screen overlay that ensures modals sit above everything */
 .modal-overlay {
     position: fixed;
     inset: 0;
     display: flex;
     align-items: center;
     justify-content: center;
-    background: rgba(0,0,0,0.35);
-    z-index: 10000; /* very high so it sits above other app components */
+    z-index: 10000; 
     padding: 1rem;
 }
 
-/* dialog sizing inside the overlay */
+
 .modal-overlay .standard-dialog {
     width: 30rem;
     max-width: calc(100% - 2rem);
@@ -36,7 +34,6 @@
 .standard-dialog .modal-contents {
     max-height: 60vh;
     overflow-y: auto;
-    background: var(--dialog-bg, white); /* preserve theme if any */
     padding: 1rem;
 }
 
