@@ -1,5 +1,5 @@
 html, body {
-  overflow: scroll;
+  overflow: auto;
 }
 
 body {
@@ -33,13 +33,19 @@ main {
 }
 
 #main-window {
+  position: relative;
   height: auto;
   width: 50vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 #ref-window {
+  position: relative;
   height: auto;
   width: 50vw;
+  left: 50%;
+  transform: translateX(-50%);
 }
 
 @media (min-width: 480px) {
