@@ -44,22 +44,6 @@ npm run build
 
 - The build output will be in the `.output` folder.
 
-
-## Updating HelixAsm Submodule
-
-If HelixAsm has updates in its GitHub repo:
-
-```bash
-cd src/lib/helixasm
-git pull origin main
-cd ../../../
-git add src/lib/helixasm
-git commit -m "Update HelixAsm submodule to latest"
-```
-
-- This ensures the latest lexer/parser are included.
-
-
 ## File Structure
 
 ```
