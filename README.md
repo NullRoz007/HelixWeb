@@ -1,32 +1,91 @@
-# SolidStart
+# HelixAsm Editor (Solid.js)
 
-Everything you need to build a Solid project, powered by [`solid-start`](https://start.solidjs.com);
+A simple Solid.js project for editing and testing HelixAsm assembly programs in the browser.
 
-## Creating a project
+---
+
+## Features
+
+- Live editor for HelixAsm programs
+- Parse, evaluate, and inspect tokens, instructions, expressions, and labels
+- Example programs with collapsible reference
+- Dynamic loading of HelixAsm Lexer and Parser
+
+---
+
+## Setup
+
+1. Clone the repository with submodules:
 
 ```bash
-# create a new project in the current directory
-npm init solid@latest
-
-# create a new project in my-app
-npm init solid@latest my-app
+git clone --recurse-submodules <your-repo-url>
 ```
 
-## Developing
+2. Install dependencies:
 
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+```bash
+npm install
+```
+
+3. Start the development server:
 
 ```bash
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+- The app should be available at `http://localhost:3000`.
 
-Solid apps are built with _presets_, which optimise your project for deployment to different environments.
+---
 
-By default, `npm run build` will generate a Node app that you can run with `npm start`. To use a different preset, add it to the `devDependencies` in `package.json` and specify in your `app.config.js`.
+## Production Build
 
-## This project was created with the [Solid CLI](https://github.com/solidjs-community/solid-cli)
+To build for production:
+
+```bash
+npm run build
+```
+
+- The build output will be in the `.output` folder.
+
+---
+
+## Updating HelixAsm Submodule
+
+If HelixAsm has updates in its GitHub repo:
+
+```bash
+cd src/lib/helixasm
+git pull origin main
+cd ../../../
+git add src/lib/helixasm
+git commit -m "Update HelixAsm submodule to latest"
+```
+
+- This ensures the latest lexer/parser are included.
+
+---
+
+## File Structure
+
+```
+helixasm/         # HelixAsm submodule
+src/
+  components/
+    Editor.jsx        # Main editor component
+    Reference.jsx     # Assembly reference
+public/
+package.json
+vite.config.js
+```
+
+---
+
+## Usage
+
+1. Open the editor in the browser.
+2. Write HelixAsm code in the textarea.
+3. Click **Parse** to see tokens, instructions, expressions, and labels.
+4. Reference section provides instruction format and examples.
+
+---
+
