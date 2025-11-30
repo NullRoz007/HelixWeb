@@ -104,7 +104,7 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CKRK5OZR.js",
+    "file": "assets/client-CFXIQOoc.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
@@ -118,7 +118,7 @@
       "src/routes/index.jsx?pick=default&pick=$css"
     ],
     "css": [
-      "assets/client-DCJf3MmJ.css"
+      "assets/client-Ml2l_G8-.css"
     ],
     "assets": [
       "assets/ChicagoFLF-o4fPnj_K.woff",
