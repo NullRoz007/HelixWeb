@@ -19,9 +19,11 @@ JP @label blink;
 
 export default function Editor() {
     const [source, setSource] = createSignal('');
+    const [buildOutput, setBuildOutput] = createSignal('');
 
     const [lexer, setLexer] = createSignal(null);
     const [parser, setParser] = createSignal(null);
+    const [codeGen, setCodeGen] = createSignal(null);
 
     const [reportTokens, setReportTokens] = createSignal([]);
     const [reportInstructions, setReportInstructions] = createSignal([]);
@@ -45,7 +47,6 @@ export default function Editor() {
         ps.tokens = tokens;
         ps.parse();
 
-        console.log(ps.labels);
         setReportTokens(tokens);
         setReportInstructions(ps.instructions);
         setReportExpressions(lx.expressions);
@@ -53,11 +54,35 @@ export default function Editor() {
         setParseModalState(true);
     }
 
+    const buildProgram = async () => {
+        if (!lexer() || !parser() || !codeGen()) {
+            console.warn("Parser/Lexer/CodeGen not loaded yet");
+            return;
+        }
+
+        const lx = new (lexer())(source());
+        const tokens = lx.tokenize();
+        const ps = new (parser())(tokens);
+
+        ps.tokens = tokens;
+        ps.parse();
+
+        const instructions = ps.instructions;
+        const cg = new (codeGen())(instructions);
+        const json = await cg.build();
+
+        setBuildOutput(json);
+    }
+
     onMount(async () => {
         const lexerModule = await import('../../helixasm/src/lib/lexer.mjs');
         const parserModule = await import('../../helixasm/src/lib/parser.mjs');
+        const codeGenModule = await import('../../helixasm/src/lib/gen.mjs');
+
         setLexer(() => lexerModule.Lexer);
         setParser(() => parserModule.Parser);
+        setCodeGen(() => codeGenModule.CodeGen);
+
         console.log("Modules loaded");
     });
 
@@ -88,19 +113,24 @@ export default function Editor() {
                 <li role="menu-item" tabindex="2" aria-haspopup="true">
                     Build
                     <ul role="menu">
-                        <li role="menu-item"><button>Json</button></li>
-                        <li role="menu-item"><button>Binary</button></li>
+                        <li role="menu-item" onClick={buildProgram}><button>Json</button></li>
+                        <li role="menu-item" onClick={() => {}}><button>Binary</button></li>
                     </ul>
                 </li>
             </ul>
-
-            <textarea
-                value={source()}
-                onInput={e => {
-                    setSource(e.currentTarget.value);
-                }}
-            />
-
+            
+            <div style="display: flex; width: 100%;">
+                <textarea
+                    value={source()}
+                    onInput={e => {
+                        setSource(e.currentTarget.value);
+                    }}
+                />
+                
+                <div class="buildOutput">
+                    <pre>{buildOutput()}</pre>
+                </div>
+            </div>
         <Show when={parseModalState() && lexer() && parser()}>
             <div class="standard-dialog center scale-down" id="parse-modal">
                 <div class="modal-contents">

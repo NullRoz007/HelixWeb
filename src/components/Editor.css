@@ -23,10 +23,20 @@
     overflow-y: auto;     
 }
 
+.buildOutput {
+    height: 260px;
+    width: 50%;
+    background-color: black;
+    color: white;
+    font-size: 12px;
+    overflow-y: auto;
+}
+
 textarea {
     flex-grow: inherit;
     height: 250px;
     resize: none;
+    width: 50%;
     font-family: Chicago_12;
     border-radius: 0px;
     border-style: dotted;
