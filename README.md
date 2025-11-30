@@ -16,7 +16,7 @@ A simple Solid.js project for editing and testing HelixAsm assembly programs in 
 1. Clone the repository with submodules:
 
 ```bash
-git clone --recurse-submodules <your-repo-url>
+git clone --recurse-submodules https://github.com/NullRoz007/HelixWeb
 ```
 
 2. Install dependencies:
