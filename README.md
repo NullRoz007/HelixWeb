@@ -2,6 +2,7 @@
 
 A simple Solid.js project for editing and testing HelixAsm assembly programs in the browser.
 
+![Web UI Showcase](https://github.com/NullRoz007/HelixWeb/blob/main/images/web.png)
 
 ## Features
 
@@ -9,7 +10,6 @@ A simple Solid.js project for editing and testing HelixAsm assembly programs in 
 - Parse, evaluate, and inspect tokens, instructions, expressions, and labels
 - Example programs with collapsible reference
 - Dynamic loading of HelixAsm Lexer and Parser
-
 
 ## Setup
 
