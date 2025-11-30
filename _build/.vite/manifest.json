@@ -6,8 +6,8 @@
       "_web-CH6RNnj1.js"
     ]
   },
-  "_preload-helper-DjB3CTiX.js": {
-    "file": "assets/preload-helper-DjB3CTiX.js",
+  "_preload-helper-CHk8NVP2.js": {
+    "file": "assets/preload-helper-CHk8NVP2.js",
     "name": "preload-helper"
   },
   "_web-CH6RNnj1.js": {
@@ -79,14 +79,14 @@
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-Bt7VUKoL.js",
+    "file": "assets/index-DJTr41ZS.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
       "_web-CH6RNnj1.js",
-      "_preload-helper-DjB3CTiX.js"
+      "_preload-helper-CHk8NVP2.js"
     ],
     "dynamicImports": [
       "node_modules/helixasm/src/lib/lexer.mjs",
@@ -94,7 +94,7 @@
       "node_modules/helixasm/src/lib/gen.mjs"
     ],
     "css": [
-      "assets/index-Bu6U31Vj.css"
+      "assets/index-C2UD_Giu.css"
     ],
     "assets": [
       "assets/nes-icons-B8YnONsN.eot",
@@ -104,21 +104,21 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-CgddUba5.js",
+    "file": "assets/client-CKRK5OZR.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
       "_HttpStatusCode-SAGlgVBI.js",
       "_web-CH6RNnj1.js",
-      "_preload-helper-DjB3CTiX.js"
+      "_preload-helper-CHk8NVP2.js"
     ],
     "dynamicImports": [
       "src/routes/[...404].jsx?pick=default&pick=$css",
       "src/routes/index.jsx?pick=default&pick=$css"
     ],
     "css": [
-      "assets/client-BZvGBNUm.css"
+      "assets/client-DCJf3MmJ.css"
     ],
     "assets": [
       "assets/ChicagoFLF-o4fPnj_K.woff",
