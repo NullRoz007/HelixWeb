@@ -1,3 +1,6 @@
 [submodule "helixasm"]
 	path = helixasm
 	url = https://github.com/NullRoz007/HelixAsm.git
+[submodule "src/helixasm"]
+	path = src/helixasm
+	url = https://github.com/NullRoz007/HelixAsm.git

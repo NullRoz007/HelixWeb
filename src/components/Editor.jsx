@@ -86,9 +86,9 @@ export default function Editor() {
     }
 
     onMount(async () => {
-        const lexerModule = await import('../../helixasm/src/lib/lexer.mjs');
-        const parserModule = await import('../../helixasm/src/lib/parser.mjs');
-        const codeGenModule = await import('../../helixasm/src/lib/gen.mjs');
+        const lexerModule = await import('../helixasm/src/lib/lexer.mjs');
+        const parserModule = await import('../helixasm/src/lib/parser.mjs');
+        const codeGenModule = await import('../helixasm/src/lib/gen.mjs');
 
         setLexer(() => lexerModule.Lexer);
         setParser(() => parserModule.Parser);
