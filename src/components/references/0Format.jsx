@@ -1,4 +1,4 @@
-import '../Reference.css'
+import '../styles/Reference.css'
 export default function Format() {
     const formatInstruction = `KEYWORD target value`;
 

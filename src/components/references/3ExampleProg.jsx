@@ -1,4 +1,4 @@
-import '../Reference.css'
+import '../styles/Reference.css'
 export default function ExampleProgRef() {
     const startProgram = `
 @label start;

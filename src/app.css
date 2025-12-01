@@ -1,5 +1,6 @@
 html, body {
-  overflow: hidden;
+  overflow-x: hidden;
+
 }
 
 body {
@@ -32,12 +33,19 @@ main {
   font-family: FindersKeepers;
 }
 
+.hlx-title {
+  display: flex; 
+  align-items: center; 
+  gap: 0.5rem;
+}
+
 #main-window {
   position: relative;
   height: auto;
   width: 50vw;
   left: 50%;
   transform: translateX(-50%);
+  z-index: 1;
 }
 
 #ref-window {
@@ -46,6 +54,10 @@ main {
   width: 50vw;
   left: 50%;
   transform: translateX(-50%);
+}
+
+#editor-window-pane {
+  overflow-y: hidden;
 }
 
 @media (min-width: 480px) {

@@ -6,34 +6,13 @@
     margin-bottom: 10px;
 }
 
-#parse-modal {
-
-}
-
-.modal-overlay {
-    position: fixed;
-    inset: 0;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    z-index: 10000; 
-    padding: 1rem;
-}
-
-
-.modal-overlay .standard-dialog {
-    width: 30rem;
-    max-width: calc(100% - 2rem);
-    z-index: 10001;
-}
-
 .standard-dialog details {
     font-size: 12px;
 }
 
 .standard-dialog .modal-contents {
     max-height: 60vh;
-    overflow-y: auto;
+    overflow-y: scroll;
     padding: 1rem;
 }
 

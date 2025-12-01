@@ -1,25 +1,120 @@
-import { createSignal } from "solid-js";
+import { createSignal, For, onMount, Show } from 'solid-js'
 
 import Editor from "~/components/Editor";
 import Reference from "~/components/Reference";
+import { Lexer } from 'helixasm/src/lib/lexer.mjs';
+import { Parser } from 'helixasm/src/lib/parser.mjs';
+import { CodeGen } from 'helixasm/src/lib/gen.mjs';
+
 import "nes.icons"
+import Modal from '~/components/Modal';
+
+const example = `@label start;
+LD :1 0
+LD #110 :1
+LD #97 :1
+LD #108 :1
+
+@label blink;
+LD :1 @expr 30 + 1;
+LD #110 :1
+LD :1 1
+LD #108 :1
+LD :1 0
+LD #108 :1
+JP @label blink;
+`;
 
 export default function Home() {
-  const [editorState, setEditorState] = createSignal(false);
+  const [editorState, setEditorState] = createSignal(true);
   const [referenceState, setReferenceState] = createSignal(false);
+  const [parseModalState, setParseModalState] = createSignal(false);
+  const [errorModalState, setErrorModalState] = createSignal(false);
+  const [errorText, setErrorText] = createSignal(false);
+  const [source, setSource] = createSignal(example);
+  const [buildOutput, setBuildOutput] = createSignal('');
 
+
+  const [reportTokens, setReportTokens] = createSignal([]);
+  const [reportInstructions, setReportInstructions] = createSignal([]);
+  const [reportExpressions, setReportExpressions] = createSignal([]);
+  const [reportLabels, setReportLabels] = createSignal([]);
+
+  const testProgram = () => {
+    try {
+      const lx = new Lexer(source());
+      const tokens = lx.tokenize();
+      const ps = new Parser(tokens);
+
+      ps.tokens = tokens;
+      ps.parse();
+
+      setReportTokens(tokens);
+      setReportInstructions(ps.instructions);
+      setReportExpressions(lx.expressions);
+      setReportLabels(ps.labels)
+      setParseModalState(true);
+    } catch (ex) {
+      setErrorText(ex.message);
+      setErrorModalState(true);
+    }
+  }
+
+  const buildProgram = async () => {
+    try {
+      const lx = new Lexer(source());
+      const tokens = lx.tokenize();
+      const ps = new Parser(tokens);
+
+      ps.tokens = tokens;
+      ps.parse();
+
+      const instructions = ps.instructions;
+      const cg = new CodeGen(instructions);
+      const json = await cg.build();
+
+      setBuildOutput(json);
+    } catch (ex) {
+      setErrorText(ex.message);
+      setErrorModalState(true);
+    }
+  }
+
+  const editorHandler = {
+    'buildOutput': buildOutput,
+    'source': source,
+
+    'setSource': setSource,
+    'setBuildOutput': setBuildOutput,
+
+    'setParseModalState': setParseModalState,
+    'setErrorModalState': setErrorModalState,
+    'setErrorText': setErrorText,
+    'setReportTokens': setReportTokens,
+    'setReportInstructions': setReportInstructions,
+    'setReportExpressions': setReportExpressions,
+    'setReportLabels': setReportLabels,
+
+    'testProgram': testProgram,
+    'buildProgram': buildProgram,
+
+    'example': example
+  };
+
+  setSource(example);
+  
   return (
     <div>
-      <div style="display: flex; align-items: center; gap: 0.5rem;">
+      <div class="hlx-title">
         <p class="hlx-header">HelixAsm</p>
         <a
           href="https://github.com/NullRoz007/HelixAsm/tree/main">
-            <i class="nes-icon github"></i>
+          <i class="nes-icon github"></i>
         </a>
-        
       </div>
+
       <p class="hlx-desc">
-        The Helix Assembly Language is an assembly language designed to make producing code for my custom 8bit Minecraft CPU easier. 
+        The Helix Assembly Language is an assembly language designed to make producing code for my custom 8bit Minecraft CPU easier.
       </p>
 
       <div class="window" id="main-window">
@@ -29,8 +124,10 @@ export default function Home() {
           <button aria-label="Resize" class="resize" onClick={() => setEditorState(!editorState())}></button>
         </div>
         <Show when={editorState()}>
-          <div class="window-pane">
-            <Editor />
+          <div class="window-pane" id="editor-window-pane">
+            <Editor 
+              editorWrapper={editorHandler}
+            />
           </div>
         </Show>
       </div>
@@ -47,6 +144,58 @@ export default function Home() {
           </div>
         </Show>
       </div>
+
+      <Show when={errorModalState()}>
+        <Modal
+          title="Error during build!"
+          onClose={() => {setErrorModalState(false)}}
+        >
+          <p>{errorText()}</p>
+        </Modal>
+      </Show>
+
+      <Show when={parseModalState()}>
+        <Modal 
+          title="Parse Results"
+          onClose={() => {setParseModalState(false)}}
+        >
+          <details>
+            <summary>Tokens</summary>
+            <ol>
+              <For each={reportTokens()}>{(token, i) =>
+                <li><p>{token.type + ' ' + (token.value || '')}</p></li>
+              }</For>
+            </ol>
+          </details>
+
+          <details>
+            <summary>Instructions</summary>
+            <ol>
+              <For each={reportInstructions()}>{(inst, i) =>
+                <li><p>{inst.toString()}</p></li>
+              }</For>
+            </ol>
+          </details>
+
+          <details>
+            <summary>Expressions</summary>
+            <ol>
+              <For each={reportExpressions()}>{(expr, i) =>
+                <li><p>{expr.expr + ' = ' + (expr.value || '??')}</p></li>
+              }</For>
+            </ol>
+          </details>
+
+          <details>
+            <summary>Labels</summary>
+            <ol>
+              <For each={reportLabels()}>{(label, i) =>
+                <li><p>{label.name + ' = ' + (label.pos)}</p></li>
+              }</For>
+            </ol>
+          </details>
+        </Modal>
+      </Show>
     </div>
   );
 }

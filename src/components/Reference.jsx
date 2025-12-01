@@ -1,5 +1,5 @@
 import { For } from 'solid-js';
-import './Reference.css'
+import './styles/Reference.css'
 
 export default function Reference() {
     const referenceModules = import.meta.glob('./references/*.jsx', { eager: true });

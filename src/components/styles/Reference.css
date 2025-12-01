@@ -9,13 +9,6 @@ code {
     font-size: 12px;
 }
 
-.codeblock {
-    background-color: black;
-    color: white;
-    font-family: Chicago;
-    font-size: 12px;
-}
-
 /* Simple striped table styling compatible with system.css */
 .table-striped {
     border-collapse: collapse;
