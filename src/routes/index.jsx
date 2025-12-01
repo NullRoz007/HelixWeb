@@ -2,6 +2,8 @@ import { createSignal, For, onMount, Show } from 'solid-js'
 
 import Editor from "~/components/Editor";
 import Reference from "~/components/Reference";
+import Header from '~/components/Header';
+
 import { Lexer } from 'helixasm/src/lib/lexer.mjs';
 import { Parser } from 'helixasm/src/lib/parser.mjs';
 import { CodeGen } from 'helixasm/src/lib/gen.mjs';
@@ -26,19 +28,19 @@ JP @label blink;
 `;
 
 export default function Home() {
-  const [editorState, setEditorState] = createSignal(true);
-  const [referenceState, setReferenceState] = createSignal(false);
-  const [parseModalState, setParseModalState] = createSignal(false);
-  const [errorModalState, setErrorModalState] = createSignal(false);
-  const [errorText, setErrorText] = createSignal(false);
-  const [source, setSource] = createSignal(example);
-  const [buildOutput, setBuildOutput] = createSignal('');
+  const [editorState, setEditorState]               = createSignal(false);
+  const [referenceState, setReferenceState]         = createSignal(false);
+  const [parseModalState, setParseModalState]       = createSignal(false);
+  const [errorModalState, setErrorModalState]       = createSignal(false);
+  const [errorText, setErrorText]                   = createSignal(false);
+  const [source, setSource]                         = createSignal(example);
+  const [buildOutput, setBuildOutput]               = createSignal('');
 
 
-  const [reportTokens, setReportTokens] = createSignal([]);
+  const [reportTokens, setReportTokens]             = createSignal([]);
   const [reportInstructions, setReportInstructions] = createSignal([]);
-  const [reportExpressions, setReportExpressions] = createSignal([]);
-  const [reportLabels, setReportLabels] = createSignal([]);
+  const [reportExpressions, setReportExpressions]   = createSignal([]);
+  const [reportLabels, setReportLabels]             = createSignal([]);
 
   const testProgram = () => {
     try {
@@ -105,97 +107,88 @@ export default function Home() {
   
   return (
     <div>
-      <div class="hlx-title">
-        <p class="hlx-header">HelixAsm</p>
-        <a
-          href="https://github.com/NullRoz007/HelixAsm/tree/main">
-          <i class="nes-icon github"></i>
-        </a>
-      </div>
-
-      <p class="hlx-desc">
-        The Helix Assembly Language is an assembly language designed to make producing code for my custom 8bit Minecraft CPU easier.
-      </p>
-
-      <div class="window" id="main-window">
-        <div class="title-bar">
-          <button aria-label="Close" class="close"></button>
-          <h1 class="title">Editor</h1>
-          <button aria-label="Resize" class="resize" onClick={() => setEditorState(!editorState())}></button>
-        </div>
-        <Show when={editorState()}>
-          <div class="window-pane" id="editor-window-pane">
-            <Editor 
-              editorWrapper={editorHandler}
-            />
+      <Header/>
+      <div class="content-wrapper"> 
+        <div class="window" id="main-window">
+          <div class="title-bar">
+            <button aria-label="Close" class="close"></button>
+            <h1 class="title">Editor</h1>
+            <button aria-label="Resize" class="resize" onClick={() => setEditorState(!editorState())}></button>
           </div>
-        </Show>
-      </div>
-
-      <div class="window" id="ref-window">
-        <div class="title-bar">
-          <button aria-label="Close" class="close"></button>
-          <h1 class="title">Language Reference</h1>
-          <button aria-label="Resize" class="resize" onClick={() => setReferenceState(!referenceState())}></button>
+          <Show when={editorState()}>
+            <div class="window-pane" id="editor-window-pane">
+              <Editor 
+                editorWrapper={editorHandler}
+              />
+            </div>
+          </Show>
         </div>
-        <Show when={referenceState()}>
-          <div class="window-pane">
-            <Reference />
+
+        <div class="window" id="ref-window">
+          <div class="title-bar">
+            <button aria-label="Close" class="close"></button>
+            <h1 class="title">Language Reference</h1>
+            <button aria-label="Resize" class="resize" onClick={() => setReferenceState(!referenceState())}></button>
           </div>
-        </Show>
+          <Show when={referenceState()}>
+            <div class="window-pane">
+              <Reference />
+            </div>
+          </Show>
+        </div>
       </div>
 
       <Show when={errorModalState()}>
-        <Modal
-          title="Error during build!"
-          onClose={() => {setErrorModalState(false)}}
-        >
-          <p>{errorText()}</p>
-        </Modal>
-      </Show>
+          <Modal
+            title="Error during build!"
+            onClose={() => {setErrorModalState(false)}}
+          >
+            <p>{errorText()}</p>
+          </Modal>
+        </Show>
 
-      <Show when={parseModalState()}>
-        <Modal 
-          title="Parse Results"
-          onClose={() => {setParseModalState(false)}}
-        >
-          <details>
-            <summary>Tokens</summary>
-            <ol>
-              <For each={reportTokens()}>{(token, i) =>
-                <li><p>{token.type + ' ' + (token.value || '')}</p></li>
-              }</For>
-            </ol>
-          </details>
+        <Show when={parseModalState()}>
+          <Modal 
+            title="Parse Results"
+            onClose={() => {setParseModalState(false)}}
+          >
+            <details>
+              <summary>Tokens</summary>
+              <ol>
+                <For each={reportTokens()}>{(token, i) =>
+                  <li><p>{token.type + ' ' + (token.value || '')}</p></li>
+                }</For>
+              </ol>
+            </details>
 
-          <details>
-            <summary>Instructions</summary>
-            <ol>
-              <For each={reportInstructions()}>{(inst, i) =>
-                <li><p>{inst.toString()}</p></li>
-              }</For>
-            </ol>
-          </details>
+            <details>
+              <summary>Instructions</summary>
+              <ol>
+                <For each={reportInstructions()}>{(inst, i) =>
+                  <li><p>{inst.toString()}</p></li>
+                }</For>
+              </ol>
+            </details>
 
-          <details>
-            <summary>Expressions</summary>
-            <ol>
-              <For each={reportExpressions()}>{(expr, i) =>
-                <li><p>{expr.expr + ' = ' + (expr.value || '??')}</p></li>
-              }</For>
-            </ol>
-          </details>
+            <details>
+              <summary>Expressions</summary>
+              <ol>
+                <For each={reportExpressions()}>{(expr, i) =>
+                  <li><p>{expr.expr + ' = ' + (expr.value || '??')}</p></li>
+                }</For>
+              </ol>
+            </details>
 
-          <details>
-            <summary>Labels</summary>
-            <ol>
-              <For each={reportLabels()}>{(label, i) =>
-                <li><p>{label.name + ' = ' + (label.pos)}</p></li>
-              }</For>
-            </ol>
-          </details>
-        </Modal>
-      </Show>
+            <details>
+              <summary>Labels</summary>
+              <ol>
+                <For each={reportLabels()}>{(label, i) =>
+                  <li><p>{label.name + ' = ' + (label.pos)}</p></li>
+                }</For>
+              </ol>
+            </details>
+          </Modal>
+        </Show>
     </div>
   );
 }

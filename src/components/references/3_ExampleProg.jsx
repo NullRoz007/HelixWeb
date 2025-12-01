@@ -33,7 +33,7 @@ JP @label blink;     ; Jump back to blink`;
 
                 <h3>blink</h3>
                 <pre><code>{blinkProgram}</code></pre>
-                <p>This section blinks a pixel by repeatedly storing values in memory.</p>
+                <p>This section blinks a pixel by repeatedly setting the Video Control Byte to 0x1/0x0</p>
                 <p>Except for the expression-based load, all values written to <code>:1</code> are immediates or copied to memory as shown.</p>
             </section>
         </details>
