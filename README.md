@@ -13,10 +13,10 @@ A simple Solid.js project for editing and testing HelixAsm assembly programs in 
 
 ## Setup
 
-1. Clone the repository with submodules:
+1. Clone the repository:
 
 ```bash
-git clone --recurse-submodules https://github.com/NullRoz007/HelixWeb
+git clone https://github.com/NullRoz007/HelixWeb
 ```
 
 2. Install dependencies:
@@ -44,23 +44,10 @@ npm run build
 
 - The build output will be in the `.output` folder.
 
-## File Structure
-
-```
-helixasm/         # HelixAsm submodule
-src/
-  components/
-    Editor.jsx        # Main editor component
-    Reference.jsx     # Assembly reference
-public/
-package.json
-vite.config.js
-```
-
 ## Usage
 
 1. Open the editor in the browser.
-2. Write HelixAsm code in the textarea.
+2. Write HelixAsm code in the left hand pane.
 3. Click **Parse** to see tokens, instructions, expressions, and labels.
 4. Reference section provides instruction format and examples.
 
