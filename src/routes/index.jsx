@@ -46,10 +46,20 @@ export default function Home() {
     try {
       const lx = new Lexer(source());
       const tokens = lx.tokenize();
-      const ps = new Parser(tokens);
+      const subroutines = lx.subroutines;
+      
+      let parsedSubroutines = {};
+      for(let sr of Object.keys(subroutines)) {
+          let subTokens = subroutines[sr]; 
+          let subParser = new Parser(subTokens);
+          subParser.parse();
 
-      ps.tokens = tokens;
+          parsedSubroutines[sr] = subParser.instructions;
+      }
+
+      const ps = new Parser(tokens, parsedSubroutines);
       ps.parse();
+      ps.mapSubroutines();
 
       setReportTokens(tokens);
       setReportInstructions(ps.instructions);
@@ -65,11 +75,23 @@ export default function Home() {
   const buildProgram = async () => {
     try {
       const lx = new Lexer(source());
-      const tokens = lx.tokenize();
-      const ps = new Parser(tokens);
+      const lxResult = lx.tokenize();
+      const tokens = lxResult.tokens;
+      const subroutines = lxResult.subroutines;
+      console.log(subroutines);
+      
+      let parsedSubroutines = {};
+      for(let sr of Object.keys(subroutines)) {
+          let subTokens = subroutines[sr]; 
+          let subParser = new Parser(subTokens);
+          subParser.parse();
 
-      ps.tokens = tokens;
+          parsedSubroutines[sr] = subParser.instructions;
+      }
+
+      const ps = new Parser(tokens, parsedSubroutines);
       ps.parse();
+      ps.mapSubroutines();
 
       const instructions = ps.instructions;
       const cg = new CodeGen(instructions);
