@@ -1,13 +1,27 @@
 {
-  "_HttpStatusCode-BLm2of_f.js": {
-    "file": "assets/HttpStatusCode-BLm2of_f.js",
+  "_HttpStatusCode-dPmz6_7Y.js": {
+    "file": "assets/HttpStatusCode-dPmz6_7Y.js",
     "name": "HttpStatusCode",
     "imports": [
-      "_web-33ITdciV.js"
+      "_web-B1e86Evu.js"
     ]
   },
-  "_web-33ITdciV.js": {
-    "file": "assets/web-33ITdciV.js",
+  "_Modal-CCNCTwvV.js": {
+    "file": "assets/Modal-CCNCTwvV.js",
+    "name": "Modal",
+    "imports": [
+      "_web-B1e86Evu.js"
+    ],
+    "css": [
+      "assets/Modal-D1i-47t0.css"
+    ]
+  },
+  "_Modal-D1i-47t0.css": {
+    "file": "assets/Modal-D1i-47t0.css",
+    "src": "_Modal-D1i-47t0.css"
+  },
+  "_web-B1e86Evu.js": {
+    "file": "assets/web-B1e86Evu.js",
     "name": "web"
   },
   "node_modules/@sakun/system.css/dist/ChiKareGo2.woff": {
@@ -42,28 +56,40 @@
     "file": "assets/nes-icons-Do4A5HMC.woff",
     "src": "node_modules/nes.icons/fonts/nes-icons.woff"
   },
+  "src/routes/HomeContent.jsx?pick=default&pick=$css": {
+    "file": "assets/HomeContent-DyjuB__z.js",
+    "name": "HomeContent",
+    "src": "src/routes/HomeContent.jsx?pick=default&pick=$css",
+    "isEntry": true,
+    "isDynamicEntry": true,
+    "imports": [
+      "_web-B1e86Evu.js",
+      "_Modal-CCNCTwvV.js"
+    ]
+  },
   "src/routes/[...404].jsx?pick=default&pick=$css": {
-    "file": "assets/_...404_-C-m7MJqz.js",
+    "file": "assets/_...404_-Cuc4ZX2P.js",
     "name": "_...404_",
     "src": "src/routes/[...404].jsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_web-33ITdciV.js",
-      "_HttpStatusCode-BLm2of_f.js"
+      "_web-B1e86Evu.js",
+      "_HttpStatusCode-dPmz6_7Y.js"
     ]
   },
   "src/routes/index.jsx?pick=default&pick=$css": {
-    "file": "assets/index-CtV-Crov.js",
+    "file": "assets/index-CY2-F7C4.js",
     "name": "index",
     "src": "src/routes/index.jsx?pick=default&pick=$css",
     "isEntry": true,
     "isDynamicEntry": true,
     "imports": [
-      "_web-33ITdciV.js"
+      "_Modal-CCNCTwvV.js",
+      "_web-B1e86Evu.js"
     ],
     "css": [
-      "assets/index-C75csu4a.css"
+      "assets/index-Cvg73hT4.css"
     ],
     "assets": [
       "assets/nes-icons-B8YnONsN.eot",
@@ -73,15 +99,16 @@
     ]
   },
   "virtual:$vinxi/handler/client": {
-    "file": "assets/client-ORmQcl7L.js",
+    "file": "assets/client-Df_OfqCN.js",
     "name": "client",
     "src": "virtual:$vinxi/handler/client",
     "isEntry": true,
     "imports": [
-      "_HttpStatusCode-BLm2of_f.js",
-      "_web-33ITdciV.js"
+      "_HttpStatusCode-dPmz6_7Y.js",
+      "_web-B1e86Evu.js"
     ],
     "dynamicImports": [
+      "src/routes/HomeContent.jsx?pick=default&pick=$css",
       "src/routes/[...404].jsx?pick=default&pick=$css",
       "src/routes/index.jsx?pick=default&pick=$css"
     ],

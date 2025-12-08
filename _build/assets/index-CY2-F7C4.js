@@ -1,0 +1,15 @@
+import{u as Q,H as V,E as W,R as X,M as E,C as Y}from"./Modal-CCNCTwvV.js";import{q as Z,t,w as s,F as _,A as l,j as r,S as c,G as g,z as ee}from"./web-B1e86Evu.js";var le=s("<div class=window-pane id=editor-window-pane>"),re=s("<div class=window-pane>"),te=s("<p>"),ie=s("<details><summary>Tokens</summary><ol>"),ne=s("<details><summary>Instructions</summary><ol>"),se=s("<details><summary>Expressions</summary><ol>"),ae=s("<details><summary>Labels</summary><ol>"),oe=s("<div><!$><!/><div class=content-wrapper><div class=window id=main-window><div class=title-bar><button aria-label=Close class=close></button><h1 class=title>Editor</h1><button aria-label=Resize class=resize></button></div><!$><!/></div><div class=window id=ref-window><div class=title-bar><button aria-label=Close class=close></button><h1 class=title>Language Reference</h1><button aria-label=Resize class=resize></button></div><!$><!/></div></div><!$><!/><!$><!/>"),b=s("<li><p>");function $e(){const{ui:v,setUI:x,modal:m,setModal:f,report:u}=Q();return(()=>{var d=t(oe),k=d.firstChild,[C,R]=_(k.nextSibling),S=C.nextSibling,h=S.firstChild,w=h.firstChild,z=w.firstChild,H=z.nextSibling,M=H.nextSibling,O=w.nextSibling,[P,F]=_(O.nextSibling),L=h.nextSibling,y=L.firstChild,I=y.firstChild,N=I.nextSibling,T=N.nextSibling,j=y.nextSibling,[q,A]=_(j.nextSibling),G=S.nextSibling,[D,J]=_(G.nextSibling),U=D.nextSibling,[B,K]=_(U.nextSibling);return l(d,r(V,{}),C,R),M.$$click=()=>x("editorOpen",e=>!e),l(h,r(c,{get when(){return v.editorOpen},get children(){var e=t(le);return l(e,r(W,{})),e}}),P,F),T.$$click=()=>x("referenceOpen",e=>!e),l(L,r(c,{get when(){return v.referenceOpen},get children(){var e=t(re);return l(e,r(X,{})),e}}),q,A),l(d,r(c,{get when(){return m.error},get children(){return r(E,{title:"Error during build!",onClose:()=>{f({error:!1})},get children(){var e=t(te);return l(e,()=>m.errorText),e}})}}),D,J),l(d,r(c,{get when(){return m.parse},get children(){return r(E,{title:"Parse Results",onClose:()=>{f({parse:!1})},get children(){return[(()=>{var e=t(ie),a=e.firstChild,o=a.nextSibling;return l(o,r(g,{get each(){return u.tokens},children:(n,p)=>(()=>{var i=t(b),$=i.firstChild;return l($,()=>n.type+" "+(n.value||"")),i})()})),e})(),(()=>{var e=t(ne),a=e.firstChild,o=a.nextSibling;return l(o,r(g,{get each(){return u.instructions},children:(n,p)=>(()=>{var i=t(b),$=i.firstChild;return l($,()=>n.toString()),i})()})),e})(),(()=>{var e=t(se),a=e.firstChild,o=a.nextSibling;return l(o,r(g,{get each(){return u.expressions},children:(n,p)=>(()=>{var i=t(b),$=i.firstChild;return l($,()=>n.expr+" = "+(n.value||"??")),i})()})),e})(),(()=>{var e=t(ae),a=e.firstChild,o=a.nextSibling;return l(o,r(g,{get each(){return u.labels},children:(n,p)=>(()=>{var i=t(b),$=i.firstChild;return l($,()=>n.name+" = "+n.pos),i})()})),e})()]}})}}),B,K),ee(),d})()}Z(["click"]);const de=`@label start;
+LD :1 0
+LD #110 :1
+LD #97 :1
+LD #108 :1
+
+@label blink;
+LD :1 @expr 30 + 1;
+LD #110 :1
+LD :1 1
+LD #108 :1
+LD :1 0
+LD #108 :1
+JP @label blink;
+`;function ce(){return r(Y,{initialSrc:de,get children(){return r($e,{})}})}export{ce as default};
